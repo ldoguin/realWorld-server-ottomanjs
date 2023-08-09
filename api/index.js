@@ -42,6 +42,9 @@ app.use('/api/tags', require('../routes/tagRoutes'));
 // comment routes
 app.use('/api/articles', require('../routes/commentRoutes'));
 
+// search routes
+app.use('/api/search', require('../routes/searchRoutes'));
+
 app.listen(PORT, () => {
     log.info(`Server running on port ${PORT}`);
 });
