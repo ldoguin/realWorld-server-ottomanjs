@@ -7,6 +7,13 @@ const log = Logger.child({
     namespace: 'DBConnect',
 });
 
+
+const endpoint = process.env.DB_ENDPOINT || "couchbase://localhost";
+const username = process.env.DB_USERNAME || "Administrator";
+const password = process.env.DB_PASSWORD || "password";
+const bucketName = process.env.DB_BUCKET || "default";
+const scopeName = process.env.DB_SCOPE || "_default";
+
 const setupOttoman = async function(){
 
   // TODO: Fix global plugin registration
@@ -22,30 +29,25 @@ const setupOttoman = async function(){
       ottoman = new Ottoman();
     };
   
-    const endpoint = process.env.DB_ENDPOINT || "couchbase://localhost";
-    const username = process.env.DB_USERNAME || "Administrator";
-    const password = process.env.DB_PASSWORD || "password";
-    const bucket = process.env.DB_BUCKET || "default";
-    const scope = process.env.DB_SCOPE || "_default";
 
     try {
       await ottoman.connect({
         connectionString: endpoint,
         username: username,
         password: password,
-        bucketName: bucket,
+        bucketName: bucketName,
       });
     } catch (e) {
       throw(e);
     }
 
-    const User = model('User', userSchema, { scopeName: scope });
-    const Comment = model('Comment', commentSchema, { scopeName: scope });
-    const Article = model('Article', articleSchema, { scopeName: scope });
+    const User = model('User', userSchema, { scopeName: scopeName });
+    const Comment = model('Comment', commentSchema, { scopeName: scopeName });
+    const Article = model('Article', articleSchema, { scopeName: scopeName });
 
     await ottoman.start();
     log.info('Connected to Couchbase');
 }
 
-module.exports = {setupOttoman, User, Comment, Article}
+module.exports = {setupOttoman, User, Comment, Article, bucketName, scopeName}
 
