@@ -11,7 +11,7 @@
     "start:coverage": "nyc --silent node api/index.js",
     "lint": "eslint .",
     "test-api": "postman/run-api-tests.sh",
-    "strip-cb-sdk": "strip --strip-debug ./node_modules/ottoman/node_modules/couchbase/build/Release/couchbase_impl.node"
+    "strip-cb-sdk": "find -name couchbase_impl.node | xargs strip --debug"
   },
   "keywords": [],
   "author": "",
