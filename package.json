@@ -4,7 +4,7 @@
   "description": "realWorld Project",
   "main": "api/index.js",
   "scripts": {
-    "build": "npm run strip-cb-sdk && npm run build-frontend",
+    "build": "npm run lookup-domain && run strip-cb-sdk && npm run build-frontend",
     "start": "node api/index.js",
     "dev": "nodemon server",
     "test": "jest --verbose --forceExit --detectOpenHandles",
@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "test-api": "postman/run-api-tests.sh",
     "strip-cb-sdk": "find -name couchbase_impl.node | xargs strip --strip-debug",
-    "build-frontend": "cd frontend && pnpm install && pnpm build && cp -r dist/* ../public/"
+    "build-frontend": "cd frontend && pnpm install && pnpm build && cp -r dist/* ../public/",
+    "lookup-domain": "nslookup -type=SRV _couchbases._tcp.${CB_CONNECT_STRING:13}"
   },
   "keywords": [],
   "author": "",
