@@ -8,11 +8,11 @@ const log = Logger.child({
 });
 
 
-const endpoint = process.env.DB_ENDPOINT || "couchbase://localhost";
-const username = process.env.DB_USERNAME || "Administrator";
-const password = process.env.DB_PASSWORD || "password";
-const bucketName = process.env.DB_BUCKET || "default";
-const scopeName = process.env.DB_SCOPE || "_default";
+const endpoint = process.env.CB_CONNECT_STRING || "couchbase://localhost";
+const username = process.env.CB_USERNAME || "Administrator";
+const password = process.env.CB_PASSWORD || "password";
+const bucketName = process.env.CB_BUCKET || "default";
+const scopeName = process.env.CB_SCOPE || "_default";
 
 const setupOttoman = async function(){
 
