@@ -2,7 +2,7 @@ const { Schema, model, getModel,addValidators } = require('ottoman');
 const jwt = require("jsonwebtoken");
 const {scopeName} = require("../config/dbConnect")
 const accessTokenSecret = require('../config/securityConfig');
-const { PropertyRequiredError, ValidationError} = require("../api/errors");
+const { PropertyRequiredError, ValidationError} = require("../config/errors");
 const emailRegX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/;
 addValidators({
     username: (value) => {

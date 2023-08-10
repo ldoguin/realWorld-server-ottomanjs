@@ -2,7 +2,7 @@ const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcrypt');
 const {getModel} = require('ottoman');
 const User = getModel('User');
-const { PropertyRequiredError} = require("../api/errors");
+const { PropertyRequiredError} = require("../config/errors");
 const  {Logger} = require('../config/logger');
 const log = Logger.child({
     namespace: 'UsersController',
