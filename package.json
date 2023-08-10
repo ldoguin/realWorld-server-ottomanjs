@@ -12,7 +12,7 @@
     "lint": "eslint .",
     "test-api": "postman/run-api-tests.sh",
     "strip-cb-sdk": "find -name couchbase_impl.node | xargs strip --strip-debug",
-    "build-frontend": "cd frontend && pnpm install && pnpm build"
+    "build-frontend": "cd frontend && pnpm install && pnpm build && cp -r dist/* ../public/"
   },
   "keywords": [],
   "author": "",

@@ -21,7 +21,7 @@ app.use(express.json()); // middleware to parse json
 app.use(cookieParser());
 
 // static route
-app.use('/', express.static(path.join(__dirname, '../frontend/dist')));
+app.use('/', express.static(path.join(__dirname, '/public')));
 app.use('/', require('../routes/root'));
 
 // user routes - for testing
