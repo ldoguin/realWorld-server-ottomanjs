@@ -1,4 +1,5 @@
 const { Schema, model, getModel } = require('ottoman');
+const {scopeName} = require("../config/dbConnect")
 
 const commentSchema = new Schema({
     body: {
@@ -24,5 +25,4 @@ commentSchema.methods.toCommentResponse = async function (user) {
     }
 };
 
-const scope = process.env.DB_SCOPE || "_default";
-module.exports = { Comment: model('Comment', commentSchema, { scopeName: scope }), commentSchema: commentSchema};
+module.exports = { Comment: model('Comment', commentSchema, { scopeName: scopeName }), commentSchema: commentSchema};

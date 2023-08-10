@@ -1,5 +1,6 @@
 const { Schema, model, getModel,addValidators } = require('ottoman');
 const jwt = require("jsonwebtoken");
+const {scopeName} = require("../config/dbConnect")
 const accessTokenSecret = require('../config/securityConfig');
 const { PropertyRequiredError, ValidationError} = require("../api/errors");
 const emailRegX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/;
@@ -146,7 +147,6 @@ userSchema.methods.unfavorite = async  function (id) {
     return article.save();
 };
 
-const scope = process.env.DB_SCOPE || "_default";
-const User =  model('User', userSchema, { scopeName: scope });
+const User =  model('User', userSchema, { scopeName: scopeName });
 exports.userSchema = userSchema;
 exports.User = User;
