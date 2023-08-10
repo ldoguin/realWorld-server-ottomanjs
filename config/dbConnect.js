@@ -38,6 +38,7 @@ const setupOttoman = async function(){
         bucketName: bucketName,
       });
     } catch (e) {
+      log.error(e,"there was an error while setting up connection")
       throw(e);
     }
 
