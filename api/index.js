@@ -21,7 +21,8 @@ app.use(express.json()); // middleware to parse json
 app.use(cookieParser());
 
 // static route
-app.use('/', express.static(path.join(__dirname, '/public')));
+if (!process.env.VERCEL) app.use('/', express.static(path.join(__dirname, '/public')));
+
 app.use('/', require('../routes/root'));
 
 // user routes - for testing
