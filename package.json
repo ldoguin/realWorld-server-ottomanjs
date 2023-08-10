@@ -4,7 +4,7 @@
   "description": "realWorld Project",
   "main": "api/index.js",
   "scripts": {
-    "build": "npm run lookup-domain && run strip-cb-sdk && npm run build-frontend",
+    "build": "npm run strip-cb-sdk && npm run build-frontend",
     "start": "node api/index.js",
     "dev": "nodemon server",
     "test": "jest --verbose --forceExit --detectOpenHandles",
