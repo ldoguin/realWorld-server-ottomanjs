@@ -36,6 +36,13 @@ const setupOttoman = async function(){
         username: username,
         password: password,
         bucketName: bucketName,
+        timeouts: {
+          managementTimeout: 10000,
+          kvTimeout: 10000
+        },
+        dnsConfig: {
+          dnsSrvTimeout: 10000
+        }
       });
     } catch (e) {
       log.error(e,"there was an error while setting up connection")
