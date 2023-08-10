@@ -1,6 +1,5 @@
 const { Schema, model, getModel } = require('ottoman');
 const slugify = require('slugify');
-const {scopeName} = require("../config/dbConnect")
 
 const articleSchema = new Schema({
     slug: {
@@ -76,6 +75,7 @@ articleSchema.methods.removeComment = async function (commentId) {
     return this.save();
 };
 
-const article =  model('Article', articleSchema, { scopeName: scopeName });
+const scope = process.env.DB_SCOPE || "_default";
+const article =  model('Article', articleSchema, { scopeName: scope });
 exports.articleSchema = articleSchema;
 exports.Article = article;
