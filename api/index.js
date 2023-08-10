@@ -21,12 +21,12 @@ app.use(express.json()); // middleware to parse json
 app.use(cookieParser());
 
 // static route
-if (!process.env.VERCEL) app.use('/', express.static(path.join(__dirname, '/public')));
+if (!process.env.VERCEL) app.use('/', express.static(path.join(__dirname, '../public')));
 
-app.use('/', require('../routes/root'));
+// app.use('/', require('../routes/root'));
 
-// user routes - for testing
-app.use('/test', require('../routes/testRoutes'));
+// // user routes - for testing
+// app.use('/test', require('../routes/testRoutes'));
 
 // user routes - for /api/users and /api/user
 app.use('/api', require('../routes/userRoutes'));
@@ -51,5 +51,5 @@ app.listen(PORT, () => {
 });
 };
 
-main();
+Promise.resolve(main());
 module.exports = app;
