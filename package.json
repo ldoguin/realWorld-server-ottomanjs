@@ -4,12 +4,14 @@
   "description": "realWorld Project",
   "main": "api/index.js",
   "scripts": {
+    "build": "npm run strip-cb-sdk",
     "start": "node api/index.js",
     "dev": "nodemon server",
     "test": "jest --verbose --forceExit --detectOpenHandles",
     "start:coverage": "nyc --silent node api/index.js",
     "lint": "eslint .",
-    "test-api": "postman/run-api-tests.sh"
+    "test-api": "postman/run-api-tests.sh",
+    "strip-cb-sdk": "strip --strip-debug ./node_modules/ottoman/node_modules/couchbase/build/Release/couchbase_impl.node"
   },
   "keywords": [],
   "author": "",
