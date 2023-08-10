@@ -4,7 +4,7 @@
   "description": "realWorld Project",
   "main": "api/index.js",
   "scripts": {
-    "build": "npm run strip-cb-sdk && npm run build-frontend",
+    "build": "npm run strip-cb-sdk && npm run replace-cb-sdk && npm run build-frontend",
     "start": "node api/index.js",
     "dev": "nodemon server",
     "test": "jest --verbose --forceExit --detectOpenHandles",
@@ -12,6 +12,7 @@
     "lint": "eslint .",
     "test-api": "postman/run-api-tests.sh",
     "strip-cb-sdk": "find -name couchbase_impl.node | xargs strip --strip-debug",
+    "replace-cb-sdk": "rm node_modules/ottoman/node_modules/couchbase/build/Release/couchbase_impl.node && mv node_modules/couchbase/build/Release/couchbase_impl.node node_modules/ottoman/node_modules/couchbase/build/Release/couchbase_impl.node",
     "build-frontend": "cd frontend && pnpm install && pnpm build && cp -r dist/* ../public/",
     "lookup-domain": "nslookup -type=SRV _couchbases._tcp.${CB_CONNECT_STRING:13}"
   },
@@ -27,7 +28,8 @@
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.1",
-    "ottoman": "^2.3.3",
+    "couchbase": "4.2.4",
+    "ottoman": "^2.3.4",
     "roarr": "^7.15.0",
     "slugify": "^1.6.5",
     "supertest": "^6.3.3"
